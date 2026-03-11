@@ -91,7 +91,7 @@ interface Chunk {
 // Hashing for change detection
 // ---------------------------------------------------------------------------
 
-function loadHashes(): Record<string, string> {
+function loadHashesFromFile(): Record<string, string> {
   try {
     if (existsSync(HASHES_FILE)) {
       return JSON.parse(readFileSync(HASHES_FILE, 'utf-8'))
@@ -100,8 +100,34 @@ function loadHashes(): Record<string, string> {
   return {}
 }
 
-function saveHashes(hashes: Record<string, string>) {
+async function loadHashesFromSupabase(supabase: ReturnType<typeof createClient>): Promise<Record<string, string>> {
+  try {
+    const { data, error } = await supabase
+      .from('rag_hashes')
+      .select('article_id, hash')
+    if (error || !data) return {}
+    const hashes: Record<string, string> = {}
+    for (const row of data) hashes[row.article_id] = row.hash
+    return hashes
+  } catch { return {} }
+}
+
+async function loadHashes(supabase: ReturnType<typeof createClient>): Promise<Record<string, string>> {
+  // Local file takes priority (faster), fallback to Supabase (for CI/Vercel)
+  const local = loadHashesFromFile()
+  if (Object.keys(local).length > 0) return local
+  console.log('  ℹ️  No local hashes — checking Supabase...')
+  return loadHashesFromSupabase(supabase)
+}
+
+async function saveHashes(hashes: Record<string, string>, supabase: ReturnType<typeof createClient>) {
+  // Save locally
   writeFileSync(HASHES_FILE, JSON.stringify(hashes, null, 2))
+  // Save to Supabase (for CI/Vercel where local file doesn't persist)
+  try {
+    const rows = Object.entries(hashes).map(([article_id, hash]) => ({ article_id, hash }))
+    await supabase.from('rag_hashes').upsert(rows, { onConflict: 'article_id' })
+  } catch { /* non-critical */ }
 }
 
 function hashContent(chunks: Chunk[]): string {
@@ -260,7 +286,7 @@ async function main() {
   const supabase = getSupabase()
   const anthropic = getAnthropic()
 
-  const hashes = loadHashes()
+  const hashes = await loadHashes(supabase)
   const newHashes = { ...hashes }
 
   // Read all chunk files
@@ -321,7 +347,7 @@ async function main() {
     console.log(`  ✅ ${articleId} — ${splitChunks.length} chunks ingested`)
   }
 
-  saveHashes(newHashes)
+  await saveHashes(newHashes, supabase)
 
   console.log(`\n✅ Ingestion complete: ${totalIngested} ingested, ${totalSkipped} skipped`)
 }
