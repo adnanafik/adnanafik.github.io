@@ -347,6 +347,16 @@ async function main() {
     console.log(`  ✅ ${articleId} — ${splitChunks.length} chunks ingested`)
   }
 
+  // Cleanup: remove articles from Supabase that no longer have chunk files
+  const activeArticleIds = new Set(chunkFiles.map(f => basename(f, '.json')))
+  for (const articleId of Object.keys(newHashes)) {
+    if (!activeArticleIds.has(articleId)) {
+      console.log(`  🗑  ${articleId} — removed from index (no chunk file)`)
+      await deleteArticleChunks(supabase, articleId)
+      delete newHashes[articleId]
+    }
+  }
+
   await saveHashes(newHashes, supabase)
 
   console.log(`\n✅ Ingestion complete: ${totalIngested} ingested, ${totalSkipped} skipped`)
