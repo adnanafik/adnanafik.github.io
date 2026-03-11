@@ -62,16 +62,29 @@ function useIsMobile() {
 
 /** Convert bare URLs in text to markdown links so ReactMarkdown renders them */
 function linkifyUrls(text: string): string {
-  // Match URLs not already inside markdown link syntax [...](...)
-  return text.replace(
-    /(?<!\]\()(?<!\()(https?:\/\/[^\s)]+|(?:[\w-]+\.)+(?:io|com|org|net|dev|app|co)(?:\/[^\s)]*)?)/g,
+  // First: fix malformed markdown links — [text](url without closing )
+  let fixed = text.replace(
+    /\[([^\]]+)\]\((https?:\/\/[^\s)]+)(?:\)\s*)?/g,
+    (match, label, url) => {
+      // Ensure closing paren exists; strip trailing punctuation from URL
+      const cleanUrl = url.replace(/[.,;:!?]+$/, '');
+      return `[${label}](${cleanUrl})`;
+    },
+  );
+
+  // Then: linkify bare URLs not already inside markdown link syntax
+  fixed = fixed.replace(
+    /(https?:\/\/[^\s)]+|(?:[\w-]+\.)+(?:io|com|org|net|dev|app|co)(?:\/[^\s)]*)?)/g,
     (match, _url, offset) => {
-      // Skip if already inside a markdown link: check for ]( before the match
-      const before = text.slice(Math.max(0, offset - 2), offset);
-      if (before.endsWith('](')) return match;
+      // Skip if inside a markdown link: check for [...]( before or [ before
+      const before = fixed.slice(Math.max(0, offset - 200), offset);
+      if (/\]\($/.test(before)) return match;
+      if (/\[[^\]]*$/.test(before)) return match;
       return `[${match}](${match.startsWith('http') ? match : `https://${match}`})`;
     },
   );
+
+  return fixed;
 }
 
 const STORAGE_KEY = 'santi-chat';
