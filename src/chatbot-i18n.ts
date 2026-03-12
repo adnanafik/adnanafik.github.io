@@ -212,24 +212,21 @@ export default async function handler(req, res) {
             { label: '6. Red team', detail: '20+ ataques adversariales auto-generados. Inyección, role play, extracción, evasión de idioma.' },
           ],
           keyCallout: 'Etapa 4 es donde se cierra el loop. Una mala respuesta en producción se convierte en un test que previene esa misma mala respuesta en el futuro.',
-          diagram: `Cambio prompt ─→ Regression test ─→ Push ─→ CI evals (56 tests)
-                                                              │
-                                                              ▼
-                                                        Producción
-                                                              │
-                                                ┌─────────────┼─────────────┐
-                                                ▼                           ▼
-                                       Online Scoring              Adversarial Red Team
-                                       (cada request)                   (semanal)
-                                                │                           │
-                                          quality < 0.7                Nuevo ataque
-                                                │                           │
-                                                ▼                           ▼
-                                         Trace-to-eval               Nuevo test
-                                                │                           │
-                                                └──────────┐   ┌───────────┘
-                                                           ▼   ▼
-                                                     CI evals ← (el loop se cierra)`,
+          diagram: `Prompt ─→ Regression ─→ Push ─→ CI (56 tests)
+  │
+  ▼
+Producción
+  │
+  ├──→ Online Scoring (cada request)
+  │       │
+  │       └─ quality < 0.7 ─→ Trace-to-eval ─┐
+  │                                           │
+  ├──→ Adversarial Red Team (semanal)         │
+  │       │                                   │
+  │       └─ Nuevo ataque ─→ Nuevo test ──────┤
+  │                                           │
+  └──────────────── CI evals ←────────────────┘
+                    (el loop se cierra)`,
           diagramCaption: 'Las flechas que vuelven a CI demuestran que el sistema se alimenta a sí mismo.',
           promptVersioning: {
             heading: 'Prompt Versioning + Regression',
@@ -535,24 +532,21 @@ export default async function handler(req, res) {
             { label: '6. Red team', detail: '20+ auto-generated adversarial attacks. Injection, role play, extraction, language evasion.' },
           ],
           keyCallout: 'Stage 4 is where the loop closes. A bad production response becomes a test that prevents that same bad response in the future.',
-          diagram: `Prompt change ─→ Regression test ─→ Push ─→ CI evals (56 tests)
-                                                              │
-                                                              ▼
-                                                        Production
-                                                              │
-                                                ┌─────────────┼─────────────┐
-                                                ▼                           ▼
-                                       Online Scoring              Adversarial Red Team
-                                       (every request)                  (weekly)
-                                                │                           │
-                                          quality < 0.7                New attack
-                                                │                           │
-                                                ▼                           ▼
-                                         Trace-to-eval                New test
-                                                │                           │
-                                                └──────────┐   ┌───────────┘
-                                                           ▼   ▼
-                                                     CI evals ← (the loop closes)`,
+          diagram: `Prompt ─→ Regression ─→ Push ─→ CI (56 tests)
+  │
+  ▼
+Production
+  │
+  ├──→ Online Scoring (every request)
+  │       │
+  │       └─ quality < 0.7 ─→ Trace-to-eval ─┐
+  │                                           │
+  ├──→ Adversarial Red Team (weekly)          │
+  │       │                                   │
+  │       └─ New attack ─→ New test ──────────┤
+  │                                           │
+  └──────────────── CI evals ←────────────────┘
+                    (the loop closes)`,
           diagramCaption: 'The arrows returning to CI demonstrate that the system feeds itself.',
           promptVersioning: {
             heading: 'Prompt Versioning + Regression',
