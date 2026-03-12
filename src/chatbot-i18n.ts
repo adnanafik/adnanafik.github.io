@@ -4,7 +4,7 @@ export const chatbotContent = {
       altSlug: 'self-healing-chatbot',
       readingTime: '20 min de lectura',
       seo: {
-        title: 'El Chatbot Que Se Cura Solo: LLMOps con RAG Agéntico y Closed-Loop | santifer.io',
+        title: 'El Chatbot Que Se Cura Solo: De Widget a LLMOps en Producción | santifer.io',
         description: 'Case study: cómo evolucioné un chatbot de 50 líneas a un sistema LLMOps con RAG agéntico, defensa de jailbreak en 6 capas, 56 evals y closed-loop automático. Lo estás usando ahora mismo.',
       },
       nav: {
@@ -13,8 +13,8 @@ export const chatbotContent = {
       },
       header: {
         kicker: 'Case Study — santifer.io (lo estás usando ahora mismo)',
-        h1: 'El Chatbot Que Se Cura Solo',
-        subtitle: 'Cómo un widget de 50 líneas evolucionó a un sistema LLMOps de producción con RAG agéntico, defensa en 6 capas, 56 evals automáticos y un closed-loop que genera tests desde fallos reales. Una persona. Zero downtime. $0 de infraestructura.',
+        h1: 'El Chatbot Que Se Cura Solo: De Widget a LLMOps en Producción',
+        subtitle: 'Cómo un widget de chat de 50 líneas evolucionó a un sistema LLMOps de producción con RAG agéntico, defensa en 6 capas, 56 evals automáticos y un closed-loop que genera tests desde fallos reales.',
         badge: 'En producción. Abre el chat para probarlo',
         date: '11 mar 2026',
       },
@@ -23,7 +23,6 @@ export const chatbotContent = {
         { value: '<$0.005', label: 'Coste/conv' },
         { value: '6', label: 'Capas', detail: 'de defensa' },
         { value: '<2s', label: 'Respuesta' },
-        { value: '1', label: 'Persona', detail: 'zero downtime' },
       ],
       metaCallout: 'Estás dentro de este sistema ahora mismo. Abre el chat y pregúntale sobre su arquitectura.',
       sections: {
@@ -86,6 +85,38 @@ export default async function handler(req, res) {
             ],
           },
         },
+        howItWasBuilt: {
+          heading: 'Cómo Se Construyó',
+          intro: 'Imagina que tu chatbot es un empleado. Cost tracking te dice cuánto cuesta cada conversación. Online scoring te dice qué tal lo está haciendo en tiempo real. CI gate impide que un cambio malo llegue a producción. Trace-to-eval convierte los errores de hoy en los tests de mañana.',
+          narrative: 'La progresión fue deliberada: primero mides, luego gestionas, luego automatizas.',
+          phases: [
+            {
+              title: 'Foundation',
+              subtitle: 'Mides antes de optimizar',
+              items: [
+                { label: 'Cost tracking por span', detail: 'Cada trace desglosado: generación, embedding, reranking, scoring. Sabes exactamente dónde va cada centavo.' },
+                { label: 'Online scoring con Haiku', detail: 'Haiku evalúa calidad y seguridad en cada respuesta vía waitUntil() — 0ms de latencia añadida al usuario. waitUntil() es una API de Vercel edge runtime que ejecuta código después de enviar la respuesta: el scoring ocurre en background sin que el usuario espere.' },
+                { label: 'CI gate', detail: '56 tests en cada push. Si falla uno, el deploy se bloquea. Nada llega a producción sin pasar la suite completa.' },
+              ],
+            },
+            {
+              title: 'Prompt Management',
+              subtitle: 'Gestionas lo que mides',
+              items: [
+                { label: 'Prompt versionado en Langfuse', detail: 'El system prompt vive en Langfuse registry con fallback a archivo local. Cada cambio se sincroniza automáticamente con hash-based detection — solo sube si cambió.' },
+                { label: 'Regression testing', detail: 'Antes de promover una versión nueva, compara respuestas v1 vs v2 en los mismos inputs. Decisión humana, no automática.' },
+              ],
+            },
+            {
+              title: 'Self-Healing',
+              subtitle: 'Automatizas lo que gestionas',
+              items: [
+                { label: 'Adversarial testing', detail: '20+ ataques auto-generados por Sonnet cada semana. No es una lista estática — los ataques evolucionan: inyección, role play, ingeniería social, evasión multilingüe.' },
+                { label: 'Trace-to-eval', detail: 'Traza con quality < 0.7 genera automáticamente un nuevo test case. El fallo de hoy es el test de mañana. El sistema se alimenta a sí mismo.' },
+              ],
+            },
+          ],
+        },
         rag: {
           heading: 'RAG Agéntico',
           whyAgentic: {
@@ -110,7 +141,7 @@ export default async function handler(req, res) {
           },
           callout: 'Cada modo de fallo fue descubierto en producción, trazado en Langfuse, y convertido en eval.',
           recursivityCallout: 'Meta: este artículo está indexado en el RAG del chatbot. Pregúntale "¿cómo funciona tu RAG?" — te responderá usando el RAG para explicar el RAG.',
-          indexedArticles: 'El chatbot indexa 4 case studies: el Agente IA Jacobo, el Business OS, el SEO Programático y este mismo artículo. Puedes preguntarle sobre cualquiera de ellos.',
+          indexedArticles: 'El chatbot puede responder sobre Jacobo, Business OS, SEO Programático y n8n para PMs — pregúntale.',
         },
         defense: {
           heading: 'Defensa en 6 Capas',
@@ -167,6 +198,25 @@ export default async function handler(req, res) {
             { label: '6. Red team', detail: '20+ ataques adversariales auto-generados. Inyección, role play, extracción, evasión de idioma.' },
           ],
           keyCallout: 'Etapa 4 es donde se cierra el loop. Una mala respuesta en producción se convierte en un test que previene esa misma mala respuesta en el futuro.',
+          diagram: `Cambio prompt ─→ Regression test ─→ Push ─→ CI evals (56 tests)
+                                                              │
+                                                              ▼
+                                                        Producción
+                                                              │
+                                                ┌─────────────┼─────────────┐
+                                                ▼                           ▼
+                                       Online Scoring              Adversarial Red Team
+                                       (cada request)                   (semanal)
+                                                │                           │
+                                          quality < 0.7                Nuevo ataque
+                                                │                           │
+                                                ▼                           ▼
+                                         Trace-to-eval               Nuevo test
+                                                │                           │
+                                                └──────────┐   ┌───────────┘
+                                                           ▼   ▼
+                                                     CI evals ← (el loop se cierra)`,
+          diagramCaption: 'Las flechas que vuelven a CI demuestran que el sistema se alimenta a sí mismo.',
           promptVersioning: {
             heading: 'Prompt Versioning + Regression',
             body: 'El system prompt vive en Langfuse como prompt registry. Cada cambio se sincroniza con hash-based detection (solo sube si cambió). Antes de promover una nueva versión a producción, prompt:regression compara las respuestas de v1 vs v2 en los mismos inputs — decisión humana, no automática.',
@@ -262,7 +312,7 @@ export default async function handler(req, res) {
       altSlug: 'chatbot-que-se-cura-solo',
       readingTime: '20 min read',
       seo: {
-        title: 'The Self-Healing Chatbot: Production LLMOps with Agentic RAG & Closed-Loop | santifer.io',
+        title: 'The Self-Healing Chatbot: From Widget to Production LLMOps | santifer.io',
         description: 'Case study: how I evolved a 50-line chatbot into a production LLMOps system with agentic RAG, 6-layer jailbreak defense, 56 automated evals, and a closed-loop that generates tests from real failures.',
       },
       nav: {
@@ -271,8 +321,8 @@ export default async function handler(req, res) {
       },
       header: {
         kicker: 'Case Study — santifer.io (you\'re using it right now)',
-        h1: 'The Self-Healing Chatbot',
-        subtitle: 'How a 50-line widget evolved into a production LLMOps system with agentic RAG, 6-layer defense, 56 automated evals, and a closed-loop that generates tests from real failures. One person. Zero downtime. $0 infrastructure.',
+        h1: 'The Self-Healing Chatbot: From Widget to Production LLMOps',
+        subtitle: 'How a 50-line chat widget evolved into a production LLMOps system with agentic RAG, 6-layer jailbreak defense, 56 automated evals, and a closed-loop that generates tests from real failures.',
         badge: 'In production. Open the chat to try it',
         date: 'Mar 11, 2026',
       },
@@ -281,7 +331,6 @@ export default async function handler(req, res) {
         { value: '<$0.005', label: 'Cost/conv' },
         { value: '6', label: 'Layers', detail: 'of defense' },
         { value: '<2s', label: 'Response' },
-        { value: '1', label: 'Person', detail: 'zero downtime' },
       ],
       metaCallout: 'You\'re inside this system right now. Open the chat and ask it about its architecture.',
       sections: {
@@ -344,6 +393,38 @@ export default async function handler(req, res) {
             ],
           },
         },
+        howItWasBuilt: {
+          heading: 'How It Was Built',
+          intro: 'Think of the chatbot as an employee. Cost tracking tells you how much each conversation costs. Online scoring tells you how well it\'s performing in real-time. CI gate prevents bad changes from reaching production. Trace-to-eval turns today\'s errors into tomorrow\'s tests.',
+          narrative: 'The progression was deliberate: first you measure, then you manage, then you automate.',
+          phases: [
+            {
+              title: 'Foundation',
+              subtitle: 'Measure before you optimize',
+              items: [
+                { label: 'Cost tracking per span', detail: 'Every trace broken down: generation, embedding, reranking, scoring. You know exactly where each cent goes.' },
+                { label: 'Online scoring with Haiku', detail: 'Haiku evaluates quality and safety on every response via waitUntil() — 0ms latency added to the user. waitUntil() is a Vercel edge runtime API that executes code after sending the response: scoring happens in background without the user waiting.' },
+                { label: 'CI gate', detail: '56 tests on every push. If one fails, deploy is blocked. Nothing reaches production without passing the full suite.' },
+              ],
+            },
+            {
+              title: 'Prompt Management',
+              subtitle: 'Manage what you measure',
+              items: [
+                { label: 'Prompt versioned in Langfuse', detail: 'The system prompt lives in Langfuse registry with fallback to local file. Each change syncs automatically with hash-based detection — only uploads if changed.' },
+                { label: 'Regression testing', detail: 'Before promoting a new version, compares v1 vs v2 responses on the same inputs. Human decision, not automatic.' },
+              ],
+            },
+            {
+              title: 'Self-Healing',
+              subtitle: 'Automate what you manage',
+              items: [
+                { label: 'Adversarial testing', detail: '20+ auto-generated attacks by Sonnet every week. Not a static list — attacks evolve: injection, role play, social engineering, multilingual evasion.' },
+                { label: 'Trace-to-eval', detail: 'Trace with quality < 0.7 auto-generates a new test case. Today\'s failure is tomorrow\'s test. The system feeds itself.' },
+              ],
+            },
+          ],
+        },
         rag: {
           heading: 'Agentic RAG',
           whyAgentic: {
@@ -368,7 +449,7 @@ export default async function handler(req, res) {
           },
           callout: 'Every failure mode was discovered in production, traced in Langfuse, and converted into an eval.',
           recursivityCallout: 'Meta: this very article is indexed in the chatbot\'s RAG. Ask it "how does your RAG work?" — it will answer using RAG to explain RAG.',
-          indexedArticles: 'The chatbot indexes 4 case studies: the Jacobo AI Agent, the Business OS, the Programmatic SEO, and this very article. You can ask it about any of them.',
+          indexedArticles: 'The chatbot can answer about Jacobo, Business OS, Programmatic SEO, and n8n for PMs — just ask.',
         },
         defense: {
           heading: '6-Layer Defense',
@@ -425,6 +506,25 @@ export default async function handler(req, res) {
             { label: '6. Red team', detail: '20+ auto-generated adversarial attacks. Injection, role play, extraction, language evasion.' },
           ],
           keyCallout: 'Stage 4 is where the loop closes. A bad production response becomes a test that prevents that same bad response in the future.',
+          diagram: `Prompt change ─→ Regression test ─→ Push ─→ CI evals (56 tests)
+                                                              │
+                                                              ▼
+                                                        Production
+                                                              │
+                                                ┌─────────────┼─────────────┐
+                                                ▼                           ▼
+                                       Online Scoring              Adversarial Red Team
+                                       (every request)                  (weekly)
+                                                │                           │
+                                          quality < 0.7                New attack
+                                                │                           │
+                                                ▼                           ▼
+                                         Trace-to-eval                New test
+                                                │                           │
+                                                └──────────┐   ┌───────────┘
+                                                           ▼   ▼
+                                                     CI evals ← (the loop closes)`,
+          diagramCaption: 'The arrows returning to CI demonstrate that the system feeds itself.',
           promptVersioning: {
             heading: 'Prompt Versioning + Regression',
             body: 'The system prompt lives in Langfuse as a prompt registry. Each change syncs with hash-based detection (only uploads if changed). Before promoting a new version to production, prompt:regression compares v1 vs v2 responses on the same inputs — human decision, not automatic.',

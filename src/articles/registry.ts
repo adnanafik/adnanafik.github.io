@@ -244,11 +244,11 @@ export const articleRegistry: ArticleConfig[] = [
     titles: { es: 'El Chatbot Que Se Cura Solo', en: 'The Self-Healing Chatbot' },
     seo: {
       es: {
-        title: 'El Chatbot Que Se Cura Solo: LLMOps con RAG Agéntico y Closed-Loop',
+        title: 'El Chatbot Que Se Cura Solo: De Widget a LLMOps en Producción',
         description: 'Case study: cómo evolucioné un chatbot de 50 líneas a un sistema LLMOps con RAG agéntico, defensa de jailbreak en 6 capas, 56 evals y closed-loop automático.',
       },
       en: {
-        title: 'The Self-Healing Chatbot: Production LLMOps with Agentic RAG & Closed-Loop',
+        title: 'The Self-Healing Chatbot: From Widget to Production LLMOps',
         description: 'Case study: how I evolved a 50-line chatbot into a production LLMOps system with agentic RAG, 6-layer jailbreak defense, 56 automated evals, and a closed-loop that generates tests from real failures.',
       },
     },
@@ -257,6 +257,7 @@ export const articleRegistry: ArticleConfig[] = [
         'genesis': 'La Génesis',
         'evolution': 'La Evolución',
         'architecture': 'Arquitectura',
+        'how-it-was-built': 'Cómo Se Construyó',
         'rag': 'RAG Agéntico',
         'defense': 'Defensa',
         'evals': 'Los 56 Tests',
@@ -270,6 +271,7 @@ export const articleRegistry: ArticleConfig[] = [
         'genesis': 'The Genesis',
         'evolution': 'The Evolution',
         'architecture': 'Architecture',
+        'how-it-was-built': 'How It Was Built',
         'rag': 'Agentic RAG',
         'defense': 'Defense',
         'evals': 'The 56 Tests',

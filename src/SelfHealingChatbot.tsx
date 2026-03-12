@@ -130,7 +130,7 @@ export default function SelfHealingChatbot({ lang = 'en' }: { lang?: Lang }) {
       />
 
       <StatusBadge text={t.header.badge} />
-      <MetricsGrid items={t.heroMetrics} columns={5} compact />
+      <MetricsGrid items={t.heroMetrics} columns={4} compact />
       <Callout>{t.metaCallout}</Callout>
 
       <article className="prose-custom">
@@ -172,6 +172,22 @@ export default function SelfHealingChatbot({ lang = 'en' }: { lang?: Lang }) {
           headers={[...s.architecture.lifecycle.headers]}
           rows={s.architecture.lifecycle.rows.map(r => [...r])}
         />
+
+        {/* ================================================================ */}
+        {/*  HOW IT WAS BUILT                                                */}
+        {/* ================================================================ */}
+        <H2 id="how-it-was-built">{s.howItWasBuilt.heading}</H2>
+        <Prose variant="hook">{s.howItWasBuilt.intro}</Prose>
+        <Prose>{s.howItWasBuilt.narrative}</Prose>
+        {s.howItWasBuilt.phases.map((phase, i) => (
+          <div key={i}>
+            <H3>{`${phase.title} — ${phase.subtitle}`}</H3>
+            <StepList items={phase.items.map(item => ({
+              label: item.label,
+              detail: item.detail,
+            }))} />
+          </div>
+        ))}
 
         {/* ================================================================ */}
         {/*  RAG                                                             */}
@@ -237,6 +253,9 @@ export default function SelfHealingChatbot({ lang = 'en' }: { lang?: Lang }) {
           detail: st.detail,
         }))} />
         <Callout>{s.closedLoop.keyCallout}</Callout>
+
+        <CodeBlock>{s.closedLoop.diagram}</CodeBlock>
+        <Prose className="text-sm text-muted-foreground mt-2">{s.closedLoop.diagramCaption}</Prose>
 
         <H3>{s.closedLoop.promptVersioning.heading}</H3>
         <Prose>{s.closedLoop.promptVersioning.body}</Prose>
