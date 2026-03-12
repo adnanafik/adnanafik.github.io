@@ -131,6 +131,7 @@ export default function SelfHealingChatbot({ lang = 'en' }: { lang?: Lang }) {
 
       <StatusBadge text={t.header.badge} />
       <MetricsGrid items={t.heroMetrics} columns={4} compact />
+      <Callout className="bg-accent/10 border-accent/40">{t.tldr}</Callout>
       <Callout>{t.metaCallout}</Callout>
 
       <article className="prose-custom">
@@ -156,6 +157,12 @@ export default function SelfHealingChatbot({ lang = 'en' }: { lang?: Lang }) {
           detail: item.detail,
         }))} />
         <Callout>{s.evolution.callout}</Callout>
+
+        <H3>{s.evolution.beforeAfter.heading}</H3>
+        <DataTable
+          headers={[...s.evolution.beforeAfter.headers]}
+          rows={s.evolution.beforeAfter.rows.map(r => [...r])}
+        />
 
         {/* ================================================================ */}
         {/*  ARCHITECTURE                                                    */}
@@ -220,7 +227,9 @@ export default function SelfHealingChatbot({ lang = 'en' }: { lang?: Lang }) {
           title: l.title,
           detail: l.detail,
         }))} />
-        <Callout className="bg-accent/10 border-accent/40">{s.defense.linkedInCallout}</Callout>
+        <a href={s.defense.linkedInPostUrl} target="_blank" rel="noopener noreferrer" className="block no-underline">
+          <Callout className="bg-accent/10 border-accent/40 hover:border-accent/60 transition-colors cursor-pointer">{s.defense.linkedInCallout}</Callout>
+        </a>
         <Callout>{s.defense.callout}</Callout>
 
         {/* ================================================================ */}
@@ -286,6 +295,7 @@ export default function SelfHealingChatbot({ lang = 'en' }: { lang?: Lang }) {
         {/* ================================================================ */}
         {/*  LESSONS                                                         */}
         {/* ================================================================ */}
+        <Callout className="bg-accent/10 border-accent/40">{s.lessons.saveTrigger}</Callout>
         <LessonsSection heading={s.lessons.heading} items={s.lessons.items} />
 
         {/* ================================================================ */}
