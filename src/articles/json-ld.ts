@@ -17,19 +17,18 @@ interface JsonLdOptions {
   publisher?: { name: string; url: string }
   /** FAQ items — generates FAQPage schema */
   faq?: readonly { q: string; a: string }[]
-  /** HowTo schema */
-  howTo?: {
-    name: string
-    description: string
-    steps: Array<{ name: string; text: string }>
-    tools?: Array<{ name: string }>
-  }
   /** Article type — default 'Article' */
   articleType?: 'Article' | 'TechArticle'
   /** Extra 'about' entities */
   about?: Array<Record<string, string>>
   /** Extra fields like proficiencyLevel, dependencies */
   extra?: Record<string, string>
+  /** Citation URLs (LinkedIn posts, external sources) */
+  citation?: Array<{ '@type': string; name: string; url: string }>
+  /** isBasedOn — source material (course, workshop, research) */
+  isBasedOn?: Record<string, unknown>
+  /** mentions — tools and platforms referenced */
+  mentions?: Array<Record<string, string>>
 }
 
 const PERSON = {
@@ -79,6 +78,9 @@ export function buildArticleJsonLd(opts: JsonLdOptions) {
       isPartOf: { '@id': 'https://santifer.io/#website' },
       ...(opts.about ? { about: opts.about } : {}),
       ...(opts.extra || {}),
+      ...(opts.citation ? { citation: opts.citation } : {}),
+      ...(opts.isBasedOn ? { isBasedOn: opts.isBasedOn } : {}),
+      ...(opts.mentions ? { mentions: opts.mentions } : {}),
       workTranslation: { '@id': `${opts.altUrl}/#article` },
     },
     PERSON,
@@ -103,23 +105,7 @@ export function buildArticleJsonLd(opts: JsonLdOptions) {
     })
   }
 
-  if (opts.howTo) {
-    graph.push({
-      '@type': 'HowTo',
-      name: opts.howTo.name,
-      description: opts.howTo.description,
-      inLanguage,
-      step: opts.howTo.steps.map((s, i) => ({
-        '@type': 'HowToStep',
-        position: i + 1,
-        name: s.name,
-        text: s.text,
-      })),
-      ...(opts.howTo.tools ? {
-        tool: opts.howTo.tools.map((t) => ({ '@type': 'HowToTool', name: t.name })),
-      } : {}),
-    })
-  }
+  // HowTo schema removed — deprecated by Google Sept 2023
 
   return {
     '@context': 'https://schema.org',

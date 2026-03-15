@@ -14,6 +14,9 @@ export interface ArticleSeoMeta {
   images: string[]
   about: Array<Record<string, string>>
   extra?: Record<string, string>
+  citation?: Array<{ '@type': string; name: string; url: string }>
+  isBasedOn?: Record<string, unknown>
+  mentions?: Array<Record<string, string>>
 }
 
 export interface ArticleConfig {
@@ -92,6 +95,16 @@ export const articleRegistry: ArticleConfig[] = [
         { '@type': 'Thing', name: 'Product Management Automation' },
       ],
       extra: { proficiencyLevel: 'Beginner', dependencies: 'n8n Cloud (free tier), Airtable, Slack' },
+      isBasedOn: {
+        '@type': 'Course',
+        name: 'Masterclass: n8n for PMs',
+        provider: { '@type': 'Organization', name: 'Maven', url: 'https://maven.com' },
+        url: 'https://maven.com/p/52fc7d/masterclass-n8n-for-p-ms',
+      },
+      mentions: [
+        { '@type': 'SoftwareApplication', name: 'n8n', url: 'https://n8n.io' },
+        { '@type': 'SoftwareApplication', name: 'Airtable', url: 'https://airtable.com' },
+      ],
     },
   },
   {
@@ -379,6 +392,16 @@ export const articleRegistry: ArticleConfig[] = [
         { '@type': 'Thing', name: 'Retrieval-Augmented Generation' },
       ],
       extra: { proficiencyLevel: 'Expert', dependencies: 'Claude, Langfuse, Supabase, Vercel, OpenAI, Resend, GitHub Actions' },
+      citation: [
+        { '@type': 'SocialMediaPosting', name: 'Han hackeado a mi chatbot — LinkedIn post (300+ reactions)', url: 'https://www.linkedin.com/feed/update/urn:li:activity:7421984735024816128/' },
+      ],
+      mentions: [
+        { '@type': 'SoftwareApplication', name: 'Langfuse', url: 'https://langfuse.com' },
+        { '@type': 'SoftwareApplication', name: 'Supabase', url: 'https://supabase.com' },
+        { '@type': 'SoftwareApplication', name: 'OpenAI Realtime API', url: 'https://platform.openai.com' },
+        { '@type': 'SoftwareApplication', name: 'Claude Code', url: 'https://claude.ai' },
+        { '@type': 'SoftwareApplication', name: 'Vercel', url: 'https://vercel.com' },
+      ],
     },
   },
   {

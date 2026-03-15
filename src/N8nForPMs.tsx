@@ -49,17 +49,20 @@ function buildJsonLd(lang: N8nLang) {
       { '@type': 'Thing', name: 'Product Management Automation' },
     ],
     extra: { proficiencyLevel: 'Beginner', dependencies: 'n8n Cloud (free tier), Airtable, Slack' },
-    howTo: {
-      name: lang === 'es' ? 'Cómo Importar Workflow Templates de n8n' : 'How to Import n8n Workflow Templates',
-      description: t.import.description,
-      steps: [
-        { name: lang === 'es' ? 'Regístrate en n8n' : 'Sign up for n8n', text: lang === 'es' ? 'Crea una cuenta gratuita en n8n.io Cloud.' : 'Create a free account at n8n.io Cloud.' },
-        { name: lang === 'es' ? 'Descarga el JSON del workflow' : 'Download the workflow JSON', text: lang === 'es' ? 'Descarga el archivo JSON del workflow template desde esta página.' : 'Download the workflow template JSON file from this page.' },
-        { name: lang === 'es' ? 'Importa en n8n' : 'Import into n8n', text: lang === 'es' ? 'En n8n, pulsa el botón +, selecciona "Import from File" y elige el JSON descargado.' : 'In n8n, click the + button, select "Import from File", and choose the downloaded JSON file.' },
-        { name: lang === 'es' ? 'Conecta tus credenciales' : 'Connect your credentials', text: lang === 'es' ? 'Conecta tus credenciales de Slack, Airtable e IA (Anthropic/OpenAI) a los nodos del workflow importado.' : 'Connect your own Slack, Airtable, and AI (Anthropic/OpenAI) credentials to the imported workflow nodes.' },
-      ],
-      tools: [{ name: 'n8n Cloud (free tier)' }, { name: 'Slack workspace' }, { name: 'Airtable account' }],
+    isBasedOn: {
+      '@type': 'Course',
+      name: 'Masterclass: n8n for PMs',
+      description: '60-minute lightning lesson on workflow automation for product managers. 178 students enrolled.',
+      provider: { '@type': 'Organization', name: 'Maven', url: 'https://maven.com' },
+      instructor: { '@type': 'Person', name: 'Dr. Marily Nika' },
+      url: 'https://maven.com/p/52fc7d/masterclass-n8n-for-p-ms',
     },
+    publisher: { name: 'AI Product Academy', url: 'https://maven.com/marily-nika/ai-product-manager' },
+    mentions: [
+      { '@type': 'SoftwareApplication', name: 'n8n', url: 'https://n8n.io' },
+      { '@type': 'SoftwareApplication', name: 'Airtable', url: 'https://airtable.com' },
+      { '@type': 'SoftwareApplication', name: 'Slack', url: 'https://slack.com' },
+    ],
   })
 }
 

@@ -238,6 +238,9 @@ function buildArticlePage(
         articleType: seoMeta.articleType,
         about: seoMeta.about,
         extra: seoMeta.extra,
+        citation: seoMeta.citation,
+        isBasedOn: seoMeta.isBasedOn,
+        mentions: seoMeta.mentions,
       });
       const jsonLdScript = `<script type="application/ld+json">\n${JSON.stringify(jsonLd, null, 2)}\n</script>`;
       // Replace the homepage JSON-LD with article-specific one
