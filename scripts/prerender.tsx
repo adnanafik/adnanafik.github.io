@@ -216,6 +216,8 @@ const aboutJsonLd = {
       'https://huggingface.co/santifer',
       'https://www.wikidata.org/wiki/Q138710224',
       'https://www.facebook.com/santifer.io/',
+      'https://www.producthunt.com/@santifer',
+      'https://app.daily.dev/santifer',
     ],
     subjectOf: {
       '@type': 'NewsArticle',
