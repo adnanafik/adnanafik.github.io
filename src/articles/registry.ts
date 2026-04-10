@@ -19,6 +19,8 @@ export interface ArticleSeoMeta {
   mentions?: Array<Record<string, string | string[]>>
   discussionUrl?: string
   relatedLink?: string
+  video?: Record<string, unknown>
+  subjectOf?: Record<string, unknown>
 }
 
 export interface ArticleConfig {
@@ -115,6 +117,27 @@ export const articleRegistry: ArticleConfig[] = [
         { '@type': 'SoftwareApplication', name: 'n8n', url: 'https://n8n.io' },
         { '@type': 'SoftwareApplication', name: 'Airtable', url: 'https://airtable.com' },
       ],
+      video: {
+        '@type': 'VideoObject',
+        name: 'Masterclass: n8n for PMs — Lightning Session',
+        description: 'Live 60-minute session teaching Product Managers how to automate workflows with n8n and AI. 201 students enrolled.',
+        contentUrl: 'https://maven.com/p/52fc7d/masterclass-n8n-for-p-ms',
+        uploadDate: '2026-03-10',
+        duration: 'PT60M',
+        performer: { '@id': 'https://santifer.io/#person' },
+        publisher: { '@type': 'Organization', name: 'AI Product Academy', url: 'https://maven.com/marily-nika' },
+      },
+      subjectOf: {
+        '@type': 'EducationEvent',
+        name: 'Masterclass: n8n for PMs',
+        description: 'Lightning session on workflow automation for Product Managers with n8n and AI.',
+        startDate: '2026-03-10',
+        location: { '@type': 'VirtualLocation', url: 'https://maven.com/p/52fc7d/masterclass-n8n-for-p-ms' },
+        organizer: { '@type': 'Organization', name: 'AI Product Academy', url: 'https://maven.com/marily-nika', founder: { '@type': 'Person', name: 'Dr. Marily Nika', sameAs: 'https://www.wikidata.org/wiki/Q107463356' } },
+        performer: { '@id': 'https://santifer.io/#person' },
+        eventAttendanceMode: 'https://schema.org/OnlineEventAttendanceMode',
+        eventStatus: 'https://schema.org/EventScheduled',
+      },
     },
   },
   {

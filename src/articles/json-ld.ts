@@ -35,6 +35,10 @@ interface JsonLdOptions {
   discussionUrl?: string
   /** relatedLink — link to cross-posted article (Dev.to, etc.) */
   relatedLink?: string
+  /** video — VideoObject for embedded/linked video content */
+  video?: Record<string, unknown>
+  /** subjectOf — events where this content was presented */
+  subjectOf?: Record<string, unknown>
 }
 
 const PERSON = {
@@ -103,6 +107,8 @@ export function buildArticleJsonLd(opts: JsonLdOptions) {
       ...(opts.mentions ? { mentions: opts.mentions } : {}),
       ...(opts.discussionUrl ? { discussionUrl: opts.discussionUrl } : {}),
       ...(opts.relatedLink ? { relatedLink: opts.relatedLink } : {}),
+      ...(opts.video ? { video: opts.video } : {}),
+      ...(opts.subjectOf ? { subjectOf: opts.subjectOf } : {}),
       workTranslation: { '@id': `${opts.altUrl}/#article` },
     },
     PERSON,
@@ -179,6 +185,8 @@ export function buildJsonLdFromRegistry(
     mentions: meta.mentions,
     discussionUrl: meta.discussionUrl,
     relatedLink: meta.relatedLink,
+    video: meta.video,
+    subjectOf: meta.subjectOf,
     ...overrides,
   })
 }

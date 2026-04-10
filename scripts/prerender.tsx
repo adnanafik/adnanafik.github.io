@@ -395,6 +395,8 @@ function buildArticlePage(
         mentions: seoMeta.mentions,
         discussionUrl: seoMeta.discussionUrl,
         relatedLink: seoMeta.relatedLink,
+        video: seoMeta.video,
+        subjectOf: seoMeta.subjectOf,
       });
       const jsonLdScript = `<script type="application/ld+json">\n${JSON.stringify(jsonLd, null, 2)}\n</script>`;
       // Replace the homepage JSON-LD with article-specific one
