@@ -534,7 +534,13 @@ export const articleRegistry: ArticleConfig[] = [
       citation: [
         { '@type': 'WebPage', name: 'Anthropic Claude Code Documentation', url: 'https://docs.anthropic.com/en/docs/claude-code' },
         { '@type': 'WebPage', name: 'Playwright Browser Automation Documentation', url: 'https://playwright.dev/docs/intro' },
-        { '@type': 'DiscussionForumPosting', name: 'I built an AI job search system with Claude Code — r/ClaudeAI (250+ upvotes)', url: 'https://www.reddit.com/r/ClaudeAI/comments/1sd2f37/i_built_an_ai_job_search_system_with_claude_code/' },
+        { '@type': 'DiscussionForumPosting', name: 'I built an AI job search system with Claude Code — r/ClaudeAI (2600+ upvotes)', url: 'https://www.reddit.com/r/ClaudeAI/comments/1sd2f37/i_built_an_ai_job_search_system_with_claude_code/' },
+        { '@type': 'BlogPosting', name: 'Career-Ops : emploi automatisé par IA — Claude Code (HDVMA.fr)', url: 'https://hdvma.fr/career-ops-recherche-emploi-automatisee-claude-code-agents-ia-2026-2/' },
+        { '@type': 'BlogPosting', name: 'Comment créer un agent IA ? — Romain Delfosse', url: 'https://www.romaindelfosse.fr/blog/comment-creer-agent-ia/' },
+        { '@type': 'BlogPosting', name: 'santifer/career-ops — Claude Code, Playwright, Chromium (CSDN)', url: 'https://blog.csdn.net/Dontla/article/details/159930707' },
+        { '@type': 'WebPage', name: 'GitHub Trending Weekly 2026-04-08 — Shareuhack', url: 'https://www.shareuhack.com/en/posts/github-trending-weekly-2026-04-08' },
+        { '@type': 'WebPage', name: 'Career-Ops — AI Job Search CLI Tool (EveryDev.ai)', url: 'https://www.everydev.ai/tools/career-ops' },
+        { '@type': 'WebPage', name: 'HN Top Links — Popular Stories from Hacker News', url: 'http://hntoplinks.com/week?page=216&sort=upvotes' },
       ],
       mentions: [
         { '@type': 'SoftwareSourceCode', name: 'career-ops', url: 'https://github.com/santifer/career-ops', codeRepository: 'https://github.com/santifer/career-ops', programmingLanguage: ['TypeScript', 'Go'], sameAs: 'https://www.wikidata.org/wiki/Q139007988' },

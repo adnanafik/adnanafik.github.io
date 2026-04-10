@@ -53,7 +53,7 @@ export const careerOpsContent = {
         body: '631 evaluaciones después, Career-Ops toma más decisiones de filtrado que yo. Es un AI job search tool construido como multi-agent system: lee ofertas, las puntúa en 10 dimensiones, genera AI resumes personalizados y automatiza aplicaciones. Yo reviso y decido. La IA hace el trabajo analítico.',
       },
       theProblem: {
-        heading: 'El Problema',
+        heading: '¿Por Qué Necesité Automatizar Mi Búsqueda de Empleo?',
         body: 'Buscar trabajo como ingeniero senior en IA es un trabajo a jornada completa. Cada oferta exige leer la JD, mapear tus skills contra los requisitos, adaptar el CV, escribir respuestas personalizadas y rellenar formularios de 15 campos. Multiplica eso por 10 ofertas al día.',
         painPoints: [
           { label: 'Lectura repetitiva.', detail: 'El 70% de las ofertas no encajan. Lo descubres después de leer 800 palabras de JD.' },
@@ -66,7 +66,7 @@ export const careerOpsContent = {
         punchline: 'No es que sea difícil. Es que es repetitivo. Y lo repetitivo se automatiza.',
       },
       architecture: {
-        heading: 'Los 12 Modos del Agente IA',
+        heading: '¿Cómo Funciona el Sistema Multi-Agente?',
         body: 'Career-Ops no es un script ni un bot de auto-apply. Es un sistema multi-agente con 12 modos operativos, cada uno un skill file de Claude Code con su propio contexto, reglas y herramientas. Un agente IA que razona sobre el dominio del problema y ejecuta la acción correcta.',
         whyModes: {
           heading: 'Por Qué Modos, No Un Prompt',
@@ -92,7 +92,7 @@ export const careerOpsContent = {
         ],
       },
       scoring: {
-        heading: 'Scoring en 10 Dimensiones',
+        heading: '¿Cómo Evalúa Career-Ops Cada Oferta?',
         body: 'Cada oferta pasa por un framework de evaluación con 10 dimensiones ponderadas. El resultado es un score numérico (1-5) y un grade A-F. No todas las dimensiones pesan igual — Role Match y Skills Alignment son gate-pass: si fallan, el score final cae.',
         dimensions: {
           headers: ['Dimensión', 'Qué Mide', 'Peso'],
@@ -121,7 +121,7 @@ export const careerOpsContent = {
         callout: 'El 74% de las ofertas evaluadas no pasan del score 4.0. Sin el sistema, habría invertido horas leyendo JDs que no encajan.',
       },
       pipeline: {
-        heading: 'El Pipeline',
+        heading: '¿Qué Pasa Desde que Entra una URL Hasta que Sale el CV?',
         body: 'auto-pipeline es el modo estrella. Una URL entra, y sale un report de evaluación, un PDF personalizado y una línea en el tracker. Zero intervención manual hasta la revisión final.',
         steps: [
           { label: 'Extraer JD.', detail: 'Playwright navega a la URL, extrae el contenido estructurado de la oferta.' },
@@ -143,7 +143,7 @@ export const careerOpsContent = {
         },
       },
       pdf: {
-        heading: 'Crear CV con IA — Personalizado por Oferta',
+        heading: '¿Cómo Genera Career-Ops un CV Personalizado por Oferta?',
         body: 'Un CV genérico pierde. Career-Ops crea CV con IA: genera un PDF distinto para cada oferta, inyectando keywords de la JD y reordenando la experiencia por relevancia. No es un template: es un CV optimizado para ATS construido desde los proof points del CV real.',
         steps: [
           { label: 'Extraer 15-20 keywords de la JD.', detail: 'Las keywords aterrizan en el summary, primera bullet de cada rol y sección de skills.' },
@@ -182,7 +182,7 @@ export const careerOpsContent = {
         ],
       },
       results: {
-        heading: 'Resultados',
+        heading: '¿Qué Resultados Ha Conseguido Career-Ops?',
         body: 'El sistema lleva 2 meses en producción. 631 reports sobre 516 ofertas únicas (algunas re-evaluadas tras cambios de criterios). Números vivos — el tracker crece cada día.',
         metrics: [
           { value: '631', label: 'Reports generados' },
@@ -319,7 +319,7 @@ export const careerOpsContent = {
         body: '631 evaluations later, Career-Ops makes more filtering decisions than I do. An AI-powered job search tool built as a multi-agent system: reads job descriptions, scores them across 10 dimensions, generates AI resumes per listing, and automates job applications. I review and decide. The AI does the analytical work.',
       },
       theProblem: {
-        heading: 'The Problem',
+        heading: 'Why Did I Need to Automate My Job Search?',
         body: 'Searching for senior AI engineering roles is a full-time job in itself. Each offer requires reading the JD, mapping your skills against requirements, adapting the CV, writing personalized responses, and filling 15-field forms. Multiply that by 10 offers per day.',
         painPoints: [
           { label: 'Repetitive reading.', detail: '70% of offers are a poor fit. You find out after reading 800 words of JD.' },
@@ -332,7 +332,7 @@ export const careerOpsContent = {
         punchline: 'The work is not hard. It is repetitive. And repetitive work gets automated.',
       },
       architecture: {
-        heading: 'The 12 Modes — Multi-Agent System',
+        heading: 'How Does the Multi-Agent System Work?',
         body: 'Career-Ops is not a script or an auto-apply bot. It is a multi-agent system with 12 operational modes, each a Claude Code skill file with its own context, rules, and tools. An agent that reasons about the problem domain and executes the right action.',
         whyModes: {
           heading: 'Why Modes, Not One Prompt',
@@ -358,7 +358,7 @@ export const careerOpsContent = {
         ],
       },
       scoring: {
-        heading: '10-Dimension Scoring',
+        heading: 'How Does Career-Ops Evaluate Each Job Offer?',
         body: 'Every offer runs through an evaluation framework with 10 weighted dimensions. The output: a numeric score (1-5) and an A-F grade. Not all dimensions carry equal weight — Role Match and Skills Alignment are gate-pass: if they fail, the final score drops.',
         dimensions: {
           headers: ['Dimension', 'What It Measures', 'Weight'],
@@ -387,7 +387,7 @@ export const careerOpsContent = {
         callout: '74% of evaluated offers score below 4.0. Without the system, I would have spent hours reading JDs that never fit.',
       },
       pipeline: {
-        heading: 'The Pipeline',
+        heading: 'What Happens From URL Input to Generated Resume?',
         body: 'auto-pipeline is the flagship mode. A URL goes in, and out comes an evaluation report, a personalized PDF, and a tracker entry. Zero manual intervention until final review.',
         steps: [
           { label: 'Extract JD.', detail: 'Playwright navigates to the URL, extracts structured content from the offer.' },
@@ -409,7 +409,7 @@ export const careerOpsContent = {
         },
       },
       pdf: {
-        heading: 'AI Resume Builder — Personalized',
+        heading: 'How Does Career-Ops Generate a Personalized Resume?',
         body: 'A generic CV loses. Career-Ops works as an AI resume builder that generates a different ATS-optimized resume for each offer, injecting JD keywords and reordering experience by relevance. Not a template: a resume built from real CV proof points.',
         steps: [
           { label: 'Extract 15-20 keywords from the JD.', detail: 'Keywords land in the summary, first bullet of each role, and skills section.' },
@@ -448,7 +448,7 @@ export const careerOpsContent = {
         ],
       },
       results: {
-        heading: 'Results',
+        heading: 'What Results Has Career-Ops Achieved?',
         body: 'The system has been in production for 2 months. 631 reports across 516 unique offers (some re-evaluated after criteria changes). Live numbers — the tracker grows every day.',
         metrics: [
           { value: '631', label: 'Reports generated' },
