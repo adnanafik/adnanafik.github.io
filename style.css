@@ -321,6 +321,54 @@ a:hover { color: #c7d2fe; }
 }
 .press-card:hover .press-link { color: #c7d2fe; }
 
+/* ---------- Writing ---------- */
+.writing-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem; margin-top: 1rem;
+}
+.writing-card {
+  display: flex; flex-direction: column;
+  padding: 1.4rem 1.5rem; border-radius: 12px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  text-decoration: none; color: inherit;
+  transition: transform 0.2s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.writing-card:hover {
+  text-decoration: none; color: inherit;
+  transform: translateY(-3px);
+  border-color: rgba(129, 140, 248, 0.35);
+  box-shadow: 0 8px 30px rgba(99, 102, 241, 0.15);
+}
+.writing-meta {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 0.8rem;
+}
+.writing-type {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.72rem;
+  color: #c7d2fe; background: rgba(99, 102, 241, 0.12);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  padding: 0.2rem 0.55rem; border-radius: 999px;
+  letter-spacing: 0.05em; text-transform: uppercase;
+}
+.writing-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem; color: #71717a;
+}
+.writing-title {
+  font-size: 1.08rem; line-height: 1.35; margin: 0 0 0.6rem;
+  color: #f8fafc; font-weight: 600;
+}
+.writing-excerpt {
+  color: #a1a1aa; font-size: 0.92rem; line-height: 1.55;
+  margin: 0 0 1rem; flex-grow: 1;
+}
+.writing-link {
+  font-size: 0.9rem; font-weight: 500; color: #a5b4fc;
+  margin-top: auto;
+}
+.writing-card:hover .writing-link { color: #c7d2fe; }
+
 /* ---------- Experience timeline ---------- */
 .role {
   margin: 1.4rem 0; padding: 1.4rem 1.5rem;
