@@ -76,6 +76,16 @@ ARTICLES = [
     },
 ]
 
+PROJECTS = [
+    {
+        "slug": "ops-pilot",
+        "name": "ops-pilot",
+        "tagline": "Autonomous CI/CD incident response",
+        "language": "PYTHON",
+        "license": "MIT",
+    },
+]
+
 
 # ------------------------------ helpers --------------------------------------
 
@@ -282,6 +292,39 @@ def render_article_card(config, out_path):
     print(f"  wrote {out_path.relative_to(REPO_ROOT)}")
 
 
+def render_project_card(config, out_path):
+    img = make_background()
+    draw = ImageDraw.Draw(img)
+
+    wm = load_font("JetBrainsMono-Regular.ttf", 24)
+    draw.text((64, 60), "adnankhan.me", font=wm, fill=TEXT_MUTED)
+
+    kicker = load_font("JetBrainsMono-Regular.ttf", 22)
+    kicker_text = f"OPEN SOURCE · {config['license']}"
+    kw = draw.textlength(kicker_text, font=kicker)
+    draw.text((CARD_W - 64 - kw, 60), kicker_text, font=kicker, fill=(165, 180, 252))
+
+    # Name — big
+    f_name = load_font("Inter-Bold.ttf", 130)
+    y_name = 200
+    draw.text((64, y_name), config["name"], font=f_name, fill=TEXT_PRIMARY)
+
+    # Tagline
+    f_tag = load_font("Inter-Medium.ttf", 40)
+    draw.text((64, y_name + 165), config["tagline"], font=f_tag, fill=TEXT_ACCENT)
+
+    # Bottom row: language badge (left), repo hint (right)
+    f_small = load_font("JetBrainsMono-Regular.ttf", 22)
+    by = CARD_H - 64 - 22
+    draw.text((64, by), config["language"], font=f_small, fill=TEXT_DIM)
+    repo_hint = "github.com/adnanafik/" + config["slug"]
+    rhw = draw.textlength(repo_hint, font=f_small)
+    draw.text((CARD_W - 64 - rhw, by), repo_hint, font=f_small, fill=TEXT_DIM)
+
+    img.save(out_path, "PNG", optimize=True)
+    print(f"  wrote {out_path.relative_to(REPO_ROOT)}")
+
+
 def render_app_icon(size, out_path, rounded=True):
     """Dark square with a simple white lightning bolt centered."""
     img = Image.new("RGBA", (size, size), (0, 0, 0, 0))
@@ -334,6 +377,10 @@ def main():
     print("\nRendering article cards...")
     for article in ARTICLES:
         render_article_card(article, ASSETS_DIR / f"og-{article['slug']}.png")
+
+    print("\nRendering project cards...")
+    for project in PROJECTS:
+        render_project_card(project, ASSETS_DIR / f"og-{project['slug']}.png")
 
     print("\nRendering favicon + apple-touch-icon...")
     render_app_icon(180, ASSETS_DIR / "apple-touch-icon.png", rounded=True)
