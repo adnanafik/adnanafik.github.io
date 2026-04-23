@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>I built a team of AI agents that fixes CI/CD failures while I sleep — Adnan Khan</title>
+<meta name="description" content="An autonomous multi-agent system that detects CI/CD failures, diagnoses them, and opens fix PRs — before a human has opened their laptop." />
+
+<link rel="canonical" href="https://adnankhan.me/writing/ai-agents-cicd-while-i-sleep/" />
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="I built a team of AI agents that fixes CI/CD failures while I sleep" />
+<meta property="og:description" content="An autonomous multi-agent system that detects CI/CD failures, diagnoses them, and opens fix PRs — before a human has opened their laptop." />
+<meta property="og:url" content="https://adnankhan.me/writing/ai-agents-cicd-while-i-sleep/" />
+<meta property="og:image" content="https://adnankhan.me/assets/og-ai-agents-cicd-while-i-sleep.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="I built a team of AI agents that fixes CI/CD failures while I sleep" />
+<meta property="og:site_name" content="Adnan Khan" />
+<meta property="article:published_time" content="2026-03-31T00:00:00Z" />
+<meta property="article:author" content="Adnan Khan" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="I built a team of AI agents that fixes CI/CD failures while I sleep" />
+<meta name="twitter:description" content="An autonomous multi-agent system that detects CI/CD failures, diagnoses them, and opens fix PRs — before a human has opened their laptop." />
+<meta name="twitter:image" content="https://adnankhan.me/assets/og-ai-agents-cicd-while-i-sleep.png" />
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9A%A1%3C/text%3E%3C/svg%3E" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/style.css" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://adnankhan.me/writing/ai-agents-cicd-while-i-sleep/"
+  },
+  "headline": "I built a team of AI agents that fixes CI/CD failures while I sleep — here's what I learned about the future of DevOps.",
+  "description": "An autonomous multi-agent system that detects CI/CD failures, diagnoses them, and opens fix PRs before a human has opened their laptop.",
+  "image": "https://adnankhan.me/assets/adnan.jpg",
+  "datePublished": "2026-03-31",
+  "dateModified": "2026-03-31",
+  "author": {
+    "@type": "Person",
+    "@id": "https://adnankhan.me/#person",
+    "name": "Adnan Khan",
+    "url": "https://adnankhan.me/"
+  },
+  "publisher": {
+    "@type": "Person",
+    "@id": "https://adnankhan.me/#person",
+    "name": "Adnan Khan"
+  },
+  "inLanguage": "en-US",
+  "wordCount": 1103,
+  "keywords": ["Agentic AI", "CI/CD", "DevOps", "Multi-agent systems", "Claude", "ops-pilot", "Platform engineering"]
+}
+</script>
+</head>
+<body>
+
+<div id="availability-ribbon" class="ribbon" role="region" aria-label="Availability notice" hidden>
+  <div class="ribbon-inner">
+    <span class="ribbon-dot" aria-hidden="true"></span>
+    <p class="ribbon-text">
+      Currently exploring <strong>Sr. Director / VP AI Engineering</strong>, <strong>Head of Platform</strong>, or <strong>CTO</strong> roles at Series B+ companies. Remote preferred; Dallas hybrid works.
+    </p>
+    <button type="button" class="ribbon-close" aria-label="Dismiss availability notice">×</button>
+  </div>
+</div>
+
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="bg-glow" aria-hidden="true"></div>
+
+<nav class="topnav">
+  <div class="container nav-inner">
+    <a href="/" class="brand">⚡ adnan<span class="brand-accent">.</span>khan</a>
+    <div class="nav-links">
+      <a href="/#projects">Projects</a>
+      <a href="/#press">Press</a>
+      <a href="/#writing">Writing</a>
+      <a href="/#experience">Experience</a>
+      <a href="/#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container post">
+  <article>
+    <header class="post-head">
+      <a href="/#writing" class="back-link">← Back to writing</a>
+      <h1 class="post-title">I built a team of AI agents that fixes CI/CD failures while I sleep &mdash; here's what I learned about the future of DevOps.</h1>
+      <div class="post-meta">
+        <time datetime="2026-03-31">March 31, 2026</time>
+        <span class="meta-sep">·</span>
+        <span id="post-read-time">5 min read</span>
+      </div>
+    </header>
+
+    <div class="prose">
+      <p>Three weeks ago I had a thought that's been bouncing around my head for a while: what if your CI/CD pipeline didn't just tell you something broke &mdash; it actually fixed it?</p>
+
+      <p>Not a Slack alert. Not a PagerDuty page waking someone up at 2am. An autonomous system that detects the failure, reads the logs, figures out the root cause, opens a fix PR, and notifies your team &mdash; all before a human has even opened their laptop.</p>
+
+      <p>So I built it. I called it <strong>ops-pilot</strong>.</p>
+
+      <h2>What it actually does</h2>
+
+      <p>ops-pilot runs four AI agents in sequence, each with a single responsibility:</p>
+
+      <p><strong>Monitor</strong> polls your CI provider (GitHub Actions, GitLab CI, Jenkins) for failed runs and builds a structured failure model from the log tail.</p>
+
+      <p><strong>Triage</strong> sends those logs to Claude and extracts root cause, severity, and fix confidence into a typed output &mdash; not a blob of text, a structured object your system can act on.</p>
+
+      <p><strong>Fix</strong> asks the model which file to edit, fetches it from GitHub, generates a minimal patch, and opens a draft PR. Humans review before anything merges. This is non-negotiable.</p>
+
+      <p><strong>Notify</strong> writes a concise Slack message and posts it to the right channel with the PR link attached.</p>
+
+      <p>The whole pipeline runs in under 10 seconds per incident. The live demo is at <a href="https://adnanafik.github.io/ops-pilot/" target="_blank" rel="noopener">adnanafik.github.io/ops-pilot</a> if you want to see it in action.</p>
+
+      <p>ops-pilot also ships with Claude Code slash commands &mdash; <code>/run</code>, <code>/triage</code>, <code>/add-pipeline</code>, <code>/new-provider</code>, and <code>/scenario</code> &mdash; so engineers can interact with the system conversationally from their terminal without touching a dashboard or config file.</p>
+
+      <h2>The architectural decisions that actually mattered</h2>
+
+      <p>I've spent 5+ years as a Director of DevOps. I've seen a lot of automation projects that sounded great in a presentation and collapsed in production. Building ops-pilot forced me to be honest about where AI agents are genuinely useful and where they're still a liability.</p>
+
+      <h3>Humans stay in the loop on merges &mdash; always.</h3>
+      <p>Every fix the system generates lands as a draft PR, never auto-merged. This isn't timidity. It's the correct architecture for 2026. The agents are good at triage and suggestion. They are not yet reliable enough to push to main without review. Any system that skips this step is going to have a very bad day in production.</p>
+
+      <h3>The provider abstraction matters more than the agents.</h3>
+      <p>I built a <code>CIProvider</code> abstract base class with seven interface methods. GitHub Actions, GitLab CI, and Jenkins are all adapters behind it. This means the agent code doesn't care what CI system you're running &mdash; you swap the provider, not the intelligence. This is the kind of decision that separates a demo from a real platform.</p>
+
+      <h3>Use open PRs as your deduplication source of truth.</h3>
+      <p>Early versions of this kept a separate state table to track &ldquo;already processed&rdquo; failures. Then I realized: the PR itself is the state. If there's already an open PR for a failure, don't open another one. Git is your database. This eliminated an entire class of race conditions.</p>
+
+      <h3>Simulation mode for the demo, live API for local testing.</h3>
+      <p>The public demo replays three pre-recorded scenarios with zero API cost. This isn't a compromise &mdash; it's an architectural decision. A demo's job is to show the concept clearly and repeatably. Engineers who want to see the real thing clone the repo and run it themselves.</p>
+
+      <h2>What surprised me about building with agent teams</h2>
+
+      <p>The hardest part wasn't the AI. It was the scaffolding.</p>
+
+      <p>Getting Claude to triage a CI failure accurately is straightforward &mdash; feed it the log tail and the diff, ask for structured output, done. The hard part is building the environment around the agent so it can operate reliably without human oversight:</p>
+
+      <h3>Tests are the brain, not the agents.</h3>
+      <p>The agents are only as useful as your ability to verify their output. If your test suite is weak, the fix agent will confidently solve the wrong problem. I spent more time on the test harness than on any individual agent.</p>
+
+      <h3>Context pollution kills agent performance.</h3>
+      <p>If you dump 10,000 lines of CI logs into the context window, you get worse results than if you intelligently extract the 50 most relevant lines. Log curation is a first-class engineering problem, not an afterthought.</p>
+
+      <p>The Anthropic multi-agent compiler article, which inspired this project, makes a point I keep coming back to: <strong>the scaffolding is the product. The LLM is a commodity.</strong> What differentiates good agentic systems is the environment, the feedback loops, and the guardrails &mdash; not which model you call.</p>
+
+      <h2>What this means for platform engineering teams</h2>
+
+      <p>I want to be direct about something: this is not a threat to DevOps engineers. It's a force multiplier.</p>
+
+      <p>At Fabletics, we had hundreds of pipelines running at any given time &mdash; deploying simultaneously across dev, QA, and production environments. When failures came in, they didn't come in one at a time. They came in waves. A bad library upgrade or a flaky integration test could light up dozens of pipelines at once, and the DevOps team would spend hours just triaging logs across GitHub Actions and Jenkins to find the actual root cause &mdash; before they'd even written a single line of fix. At that scale, the bottleneck isn't expertise. It's bandwidth. No team is fast enough to manually triage hundreds of concurrent failures without things slipping through.</p>
+
+      <p>The engineers I've managed who are most excited about agentic AI are the ones who are already great at their jobs. Because they immediately understand what it means to offload the mechanical work &mdash; the 2am &ldquo;test_payment_webhook is flaky again&rdquo; page, the &ldquo;missing pyarrow dependency&rdquo; Docker build failure that blocks three teams &mdash; and redirect that cognitive load toward architecture, reliability strategy, and the problems that actually require human judgment.</p>
+
+      <p>The engineers who are nervous are the ones whose value proposition is being the person who knows how to fix things. That's a real concern. But the trajectory is clear: the definition of &ldquo;fixing things&rdquo; is shifting from &ldquo;executing the fix&rdquo; to &ldquo;designing the systems that execute fixes.&rdquo;</p>
+
+      <p>Directors and VPs hiring in 2026 should be asking: which of my engineers are building toward that future, and which ones are waiting to see if it arrives?</p>
+
+      <h2>What's next</h2>
+
+      <p>ops-pilot is an early proof of concept, not a production-ready product. There are real gaps: it doesn't handle merge conflicts in the fix PRs gracefully, the Jenkins provider is lightly tested, and the triage agent occasionally misattributes root cause when the failure is infrastructure rather than code.</p>
+
+      <p>But the architecture is sound, the pattern is validated, and the direction is right. The repo is public at <a href="https://github.com/adnanafik/ops-pilot" target="_blank" rel="noopener">github.com/adnanafik/ops-pilot</a> &mdash; built with Claude (Anthropic), MIT licensed, contributions welcome.</p>
+    </div>
+
+    <footer class="post-foot">
+      <p class="post-republish">
+        Also published on <a href="https://www.linkedin.com/pulse/i-built-team-ai-agents-fixes-cicd-failures-while-sleep-adnan-khan-7i7ec/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </p>
+      <div class="post-cta">
+        <a class="btn btn-primary" href="mailto:adnan@adnankhan.me">Get in touch →</a>
+        <a class="btn" href="/#writing">More writing</a>
+      </div>
+    </footer>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <p>© <span id="year"></span> Adnan Khan · Dallas, TX · <a href="https://github.com/adnanafik/adnanafik.github.io" target="_blank" rel="noopener">site source ↗</a></p>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+<script>
+(function () {
+  var KEY = 'availability-ribbon-dismissed-v1';
+  var ribbon = document.getElementById('availability-ribbon');
+  if (!ribbon) return;
+  var dismissed = false;
+  try { dismissed = localStorage.getItem(KEY) === '1'; } catch (e) {}
+  if (!dismissed) ribbon.hidden = false;
+  ribbon.querySelector('.ribbon-close').addEventListener('click', function () {
+    ribbon.hidden = true;
+    try { localStorage.setItem(KEY, '1'); } catch (e) {}
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The engineer who "just knows" is one resignation away — Adnan Khan</title>
+<meta name="description" content="Tribal knowledge is one resignation away. retro-pilot is a multi-agent AI system that runs post-mortems so institutional knowledge outlasts the engineers." />
+
+<link rel="canonical" href="https://adnankhan.me/writing/engineer-who-just-knows/" />
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="The engineer who &quot;just knows&quot; is one resignation away. I built the fix." />
+<meta property="og:description" content="Tribal knowledge is one resignation away. retro-pilot is a multi-agent AI system that runs post-mortems so institutional knowledge outlasts the engineers." />
+<meta property="og:url" content="https://adnankhan.me/writing/engineer-who-just-knows/" />
+<meta property="og:image" content="https://adnankhan.me/assets/og-engineer-who-just-knows.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="The engineer who &quot;just knows&quot; is one resignation away. I built the fix." />
+<meta property="og:site_name" content="Adnan Khan" />
+<meta property="article:published_time" content="2026-04-13T00:00:00Z" />
+<meta property="article:author" content="Adnan Khan" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="The engineer who &quot;just knows&quot; is one resignation away." />
+<meta name="twitter:description" content="A multi-agent AI system that runs post-mortems so institutional knowledge outlasts the engineers who built it." />
+<meta name="twitter:image" content="https://adnankhan.me/assets/og-engineer-who-just-knows.png" />
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9A%A1%3C/text%3E%3C/svg%3E" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/style.css" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://adnankhan.me/writing/engineer-who-just-knows/"
+  },
+  "headline": "The engineer who \"just knows\" is one resignation away. I built the fix.",
+  "description": "Tribal knowledge is one resignation away. retro-pilot is a multi-agent AI system that runs post-mortems so institutional knowledge outlasts the engineers.",
+  "image": "https://adnankhan.me/assets/adnan.jpg",
+  "datePublished": "2026-04-13",
+  "dateModified": "2026-04-13",
+  "author": {
+    "@type": "Person",
+    "@id": "https://adnankhan.me/#person",
+    "name": "Adnan Khan",
+    "url": "https://adnankhan.me/"
+  },
+  "publisher": {
+    "@type": "Person",
+    "@id": "https://adnankhan.me/#person",
+    "name": "Adnan Khan"
+  },
+  "inLanguage": "en-US",
+  "wordCount": 586,
+  "keywords": ["Agentic AI", "Post-mortem", "Institutional knowledge", "Multi-agent systems", "DevOps", "SRE", "retro-pilot"]
+}
+</script>
+</head>
+<body>
+
+<div id="availability-ribbon" class="ribbon" role="region" aria-label="Availability notice" hidden>
+  <div class="ribbon-inner">
+    <span class="ribbon-dot" aria-hidden="true"></span>
+    <p class="ribbon-text">
+      Currently exploring <strong>Sr. Director / VP AI Engineering</strong>, <strong>Head of Platform</strong>, or <strong>CTO</strong> roles at Series B+ companies. Remote preferred; Dallas hybrid works.
+    </p>
+    <button type="button" class="ribbon-close" aria-label="Dismiss availability notice">×</button>
+  </div>
+</div>
+
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="bg-glow" aria-hidden="true"></div>
+
+<nav class="topnav">
+  <div class="container nav-inner">
+    <a href="/" class="brand">⚡ adnan<span class="brand-accent">.</span>khan</a>
+    <div class="nav-links">
+      <a href="/#projects">Projects</a>
+      <a href="/#press">Press</a>
+      <a href="/#writing">Writing</a>
+      <a href="/#experience">Experience</a>
+      <a href="/#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container post">
+  <article>
+    <header class="post-head">
+      <a href="/#writing" class="back-link">← Back to writing</a>
+      <h1 class="post-title">The engineer who &ldquo;just knows&rdquo; is one resignation away. I built the fix.</h1>
+      <div class="post-meta">
+        <time datetime="2026-04-13">April 13, 2026</time>
+        <span class="meta-sep">·</span>
+        <span>3 min read</span>
+      </div>
+    </header>
+
+    <div class="prose">
+      <p>At a previous job, Redis took us down in production more than once.</p>
+
+      <p>Not the same exact failure every time. But the same class of problem — connection pool exhaustion under traffic, manifesting in slightly different ways across different services.</p>
+
+      <p>Each time, we triaged it. Fixed it. Wrote something in Confluence days later when everyone was already halfway through the next sprint. And moved on.</p>
+
+      <p>The reason we eventually got a handle on it wasn't the Confluence docs. It was tribal knowledge — whoever happened to be on-call remembered the last time it happened and knew where to look.</p>
+
+      <p>That's a terrible system. It's one resignation letter away from losing everything you learned the hard way.</p>
+
+      <p>That's the gap I built <strong>retro-pilot</strong> to close — a multi-agent AI system that runs post-mortems so your institutional knowledge outlasts the people who built it.</p>
+
+      <p class="callout">→ See it in action: <a href="https://adnanafik.github.io/retro-pilot/" target="_blank" rel="noopener">adnanafik.github.io/retro-pilot</a></p>
+
+      <hr />
+
+      <p>Production incidents don't care what caused them.</p>
+
+      <p>Redis connection pool exhausted under traffic. TLS certificate expired and took down the service mesh. Database query regressed after a schema migration. Third-party API went down and cascaded through your services. Bad feature flag rollout caused silent data corruption.</p>
+
+      <p>All of them resolve the same way: someone pages in, triages fast, patches the immediate bleeding, and closes the incident. Then life moves on.</p>
+
+      <p>retro-pilot triggers the moment an incident is resolved — regardless of cause — and a team of AI agents asks three questions: what happened, why, and what do we change so it doesn't happen again?</p>
+
+      <hr />
+
+      <p>Here's how the agents divide the work:</p>
+
+      <p>An <strong>OrchestratorAgent</strong> coordinates everything. It spawns specialist agents — one pulls logs, one queries metrics, one reads git history, one scans Slack threads. Each agent is scoped and isolated: the log agent can't touch metrics, the metrics agent can't read Slack. No cross-contamination, clean typed outputs at every boundary.</p>
+
+      <p>From there: a <strong>TimelineBuilder</strong> reconstructs what happened, a <strong>RootCauseAnalyst</strong> determines why, an <strong>ActionItemGenerator</strong> defines what changes, and a <strong>PostMortemWriter</strong> assembles the final document.</p>
+
+      <p>Then an <strong>EvaluatorAgent</strong> — running LLM-as-judge — scores the draft and sends it back for revision if it doesn't pass. Maximum 3 cycles. Nothing gets published without a human approving it.</p>
+
+      <hr />
+
+      <p>retro-pilot doesn't search past incidents by keyword. It searches by meaning.</p>
+
+      <p>&ldquo;Redis connection pool exhaustion&rdquo; and &ldquo;connection pool timeout&rdquo; don't share a single token. But they describe the same class of problem. ChromaDB with sentence-transformers finds that match. Keyword search — and your Confluence search bar — doesn't.</p>
+
+      <p>So when a new incident comes in, the OrchestratorAgent retrieves the 3 most semantically similar past post-mortems before analysis even starts. Your new incident is contextualized against your institutional knowledge — automatically, every time, whether or not the engineer on-call was there for the last one.</p>
+
+      <p>The Confluence problem isn't that teams don't write post-mortems. It's that the knowledge doesn't compound. Every incident starts from scratch.</p>
+
+      <p>retro-pilot makes knowledge compound.</p>
+
+      <hr />
+
+      <p>A note on the two-project arc:</p>
+
+      <p><strong>ops-pilot</strong> (project 1) is a multi-agent system that watches your CI/CD pipeline and reacts in real time to build and deploy failures. <strong>retro-pilot</strong> is standalone — it works for any production incident regardless of cause. But the connection is intentional: ops-pilot could trigger retro-pilot automatically after a deploy-caused incident resolves. The handoff writes itself.</p>
+
+      <p class="callout">→ Live demo: <a href="https://adnanafik.github.io/retro-pilot/" target="_blank" rel="noopener">adnanafik.github.io/retro-pilot</a></p>
+
+      <p class="callout">→ Code: <a href="https://github.com/adnanafik/retro-pilot" target="_blank" rel="noopener">github.com/adnanafik/retro-pilot</a></p>
+
+      <hr />
+
+      <p>ops-pilot fights the fire.</p>
+
+      <p>retro-pilot makes sure you never fight the same fire twice.</p>
+
+      <p>How does your team handle institutional knowledge when the engineer who &ldquo;just knows&rdquo; leaves? I'm curious how common the tribal knowledge problem actually is.</p>
+    </div>
+
+    <footer class="post-foot">
+      <p class="post-republish">
+        Also published on <a href="https://www.linkedin.com/pulse/engineer-who-just-knows-one-resignation-away-i-built-fix-adnan-khan-v62xc/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </p>
+      <div class="post-cta">
+        <a class="btn btn-primary" href="mailto:adnan@adnankhan.me">Get in touch →</a>
+        <a class="btn" href="/#writing">More writing</a>
+      </div>
+    </footer>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <p>© <span id="year"></span> Adnan Khan · Dallas, TX · <a href="https://github.com/adnanafik/adnanafik.github.io" target="_blank" rel="noopener">site source ↗</a></p>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+<script>
+(function () {
+  var KEY = 'availability-ribbon-dismissed-v1';
+  var ribbon = document.getElementById('availability-ribbon');
+  if (!ribbon) return;
+  var dismissed = false;
+  try { dismissed = localStorage.getItem(KEY) === '1'; } catch (e) {}
+  if (!dismissed) ribbon.hidden = false;
+  ribbon.querySelector('.ribbon-close').addEventListener('click', function () {
+    ribbon.hidden = true;
+    try { localStorage.setItem(KEY, '1'); } catch (e) {}
+  });
+})();
+</script>
+
+</body>
+</html>

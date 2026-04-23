@@ -1,0 +1,5 @@
+# Generator cache — fonts are re-downloaded on demand by the OG image script
+scripts/fonts/
+
+# macOS
+.DS_Store
