@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Adnan Khan — Writing</title>
+    <link>https://adnankhan.me/</link>
+    <description>Deep-dives on agentic AI systems, platform engineering, and the future of DevOps by Adnan Khan.</description>
+    <language>en-US</language>
+    <lastBuildDate>Fri, 24 Apr 2026 00:00:00 GMT</lastBuildDate>
+    <generator>hand-crafted</generator>
+    <atom:link href="https://adnankhan.me/writing/rss.xml" rel="self" type="application/rss+xml" />
+
+    <item>
+      <title><![CDATA[The engineer who "just knows" is one resignation away. I built the fix.]]></title>
+      <link>https://adnankhan.me/writing/engineer-who-just-knows/</link>
+      <guid isPermaLink="true">https://adnankhan.me/writing/engineer-who-just-knows/</guid>
+      <pubDate>Mon, 13 Apr 2026 00:00:00 GMT</pubDate>
+      <author>adnan@adnankhan.me (Adnan Khan)</author>
+      <description><![CDATA[Why tribal knowledge disappears when engineers leave — and how retro-pilot turns every incident into a permanent, searchable lesson for the next team that hits the same problem.]]></description>
+    </item>
+
+    <item>
+      <title><![CDATA[I built a team of AI agents that fixes CI/CD failures while I sleep — here's what I learned about the future of DevOps.]]></title>
+      <link>https://adnankhan.me/writing/ai-agents-cicd-while-i-sleep/</link>
+      <guid isPermaLink="true">https://adnankhan.me/writing/ai-agents-cicd-while-i-sleep/</guid>
+      <pubDate>Tue, 31 Mar 2026 00:00:00 GMT</pubDate>
+      <author>adnan@adnankhan.me (Adnan Khan)</author>
+      <description><![CDATA[The architecture behind ops-pilot: how four coordinated agents detect failures, diagnose root cause, write the fix, and open a draft PR — without removing humans from the review loop. A case for agents as force multipliers, not replacements.]]></description>
+    </item>
+
+    <item>
+      <title><![CDATA[An autonomous agent that ships validated Terraform PRs in under 10 minutes — 3-5× faster than ChatGPT and Claude.]]></title>
+      <link>https://adnankhan.me/writing/terraform-agent-under-10-min/</link>
+      <guid isPermaLink="true">https://adnankhan.me/writing/terraform-agent-under-10-min/</guid>
+      <pubDate>Thu, 26 Mar 2026 00:00:00 GMT</pubDate>
+      <author>adnan@adnankhan.me (Adnan Khan)</author>
+      <description><![CDATA[The DuploCloud system in detail: 11 specialized skills, async execution on Kubernetes, NATS JetStream, AWS Bedrock. Built to remove humans from the execution loop — while keeping the review gate where it matters.]]></description>
+    </item>
+
+  </channel>
+</rss>

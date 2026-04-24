@@ -478,6 +478,35 @@ a:hover { color: #c7d2fe; }
 }
 .writing-link-secondary:hover { color: #a5b4fc; text-decoration: none; }
 .writing-card:hover .writing-link { color: #c7d2fe; }
+.writing-rss {
+  margin-top: 1.8rem;
+  text-align: right;
+}
+.writing-rss a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: #a1a1aa;
+  padding: 0.45rem 0.95rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.02);
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+.writing-rss a:hover {
+  color: #fb923c;
+  border-color: rgba(251, 146, 60, 0.4);
+  background: rgba(251, 146, 60, 0.08);
+  text-decoration: none;
+}
+.rss-icon {
+  width: 14px;
+  height: 14px;
+}
 
 /* ---------- Experience timeline ---------- */
 .role {
