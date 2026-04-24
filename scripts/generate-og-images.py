@@ -84,6 +84,13 @@ PROJECTS = [
         "language": "PYTHON",
         "license": "MIT",
     },
+    {
+        "slug": "retro-pilot",
+        "name": "retro-pilot",
+        "tagline": "Autonomous incident post-mortems",
+        "language": "PYTHON",
+        "license": "MIT",
+    },
 ]
 
 
