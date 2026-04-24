@@ -5,8 +5,8 @@
     <link>https://adnankhan.me/</link>
     <description>Deep-dives on agentic AI systems, platform engineering, and the future of DevOps by Adnan Khan.</description>
     <language>en-US</language>
-    <lastBuildDate>Fri, 24 Apr 2026 00:00:00 GMT</lastBuildDate>
-    <generator>hand-crafted</generator>
+    <lastBuildDate>Fri, 24 Apr 2026 21:42:20 GMT</lastBuildDate>
+    <generator>scripts/generate-feed.py</generator>
     <atom:link href="https://adnankhan.me/writing/rss.xml" rel="self" type="application/rss+xml" />
 
     <item>
