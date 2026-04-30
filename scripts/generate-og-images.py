@@ -221,12 +221,12 @@ def render_home_card(out_path):
     draw.text((64, y), "Adnan Khan", font=f_big, fill=TEXT_PRIMARY)
     y += 140
 
-    draw.text((64, y), "AI & Platform Engineering Leader", font=f_sub, fill=TEXT_ACCENT)
+    draw.text((64, y), "Agentic AI for DevOps", font=f_sub, fill=TEXT_ACCENT)
     y += 62
 
     draw.text(
         (64, y),
-        "I build the systems that build the systems.",
+        "Multi-agent systems that beat the frontier models on real DevOps work.",
         font=f_tagline,
         fill=TEXT_MUTED,
     )
