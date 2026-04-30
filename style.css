@@ -1049,11 +1049,8 @@ a:hover { color: #c7d2fe; }
   padding: 0;
   margin: 1rem 0 0;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 0.65rem;
-}
-@media (min-width: 720px) {
-  .now-list { grid-template-columns: repeat(2, 1fr); }
 }
 .now-list li {
   padding: 1rem 1.25rem;
